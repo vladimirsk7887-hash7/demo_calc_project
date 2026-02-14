@@ -603,8 +603,14 @@ async function submitForm() {
     // Подготовка сообщения для Telegram
     const message = formatTelegramMessage();
 
-    // Отправка в Telegram
-    await sendToTelegram(message);
+    try {
+        // Отправка в Telegram
+        await sendToTelegram(message);
+    } catch (error) {
+        // Показать модальное окно даже при ошибке отправки,
+        // чтобы пользователь знал, что заявка зафиксирована
+        console.error('Не удалось отправить в Telegram:', error);
+    }
 
     // Показать модальное окно
     showSuccessModal();
@@ -679,28 +685,28 @@ async function sendToTelegram(message) {
     const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
     const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
 
+    if (TELEGRAM_BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' || TELEGRAM_CHAT_ID === 'YOUR_CHAT_ID_HERE') {
+        console.warn('Telegram не настроен: замените BOT_TOKEN и CHAT_ID в script.js');
+        return;
+    }
+
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-                parse_mode: 'HTML'
-            })
-        });
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message
+        })
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (!data.ok) {
-            console.error('Ошибка отправки в Telegram:', data);
-        }
-    } catch (error) {
-        console.error('Ошибка при отправке в Telegram:', error);
+    if (!data.ok) {
+        throw new Error('Telegram API error: ' + (data.description || 'Unknown error'));
     }
 }
 
