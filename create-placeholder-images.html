@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор placeholder изображений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .placeholder {
+            width: 400px;
+            height: 300px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            border-radius: 8px;
+        }
+        #apartment { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        #house { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        #office { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        .instructions {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Генератор placeholder изображений</h1>
+
+    <div class="instructions">
+        <h2>Инструкция:</h2>
+        <ol>
+            <li>Откройте этот файл в браузере</li>
+            <li>Нажмите правой кнопкой мыши на каждое изображение</li>
+            <li>Выберите "Сохранить изображение как..."</li>
+            <li>Сохраните в папку <code>images/</code> с соответствующим именем:
+                <ul>
+                    <li>apartment.jpg</li>
+                    <li>house.jpg</li>
+                    <li>office.jpg</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Или</strong> используйте кнопки "Скачать" под каждым изображением.</p>
+    </div>
+
+    <h2>Квартира</h2>
+    <canvas id="apartment" class="placeholder"></canvas>
+    <br>
+    <button onclick="downloadImage('apartment', 'apartment.jpg')">Скачать apartment.jpg</button>
+
+    <h2>Частный дом</h2>
+    <canvas id="house" class="placeholder"></canvas>
+    <br>
+    <button onclick="downloadImage('house', 'house.jpg')">Скачать house.jpg</button>
+
+    <h2>Офис</h2>
+    <canvas id="office" class="placeholder"></canvas>
+    <br>
+    <button onclick="downloadImage('office', 'office.jpg')">Скачать office.jpg</button>
+
+    <script>
+        function createPlaceholder(id, text, gradient) {
+            const canvas = document.getElementById(id);
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = 400;
+            canvas.height = 300;
+
+            // Градиент
+            const grd = ctx.createLinearGradient(0, 0, 400, 300);
+            grd.addColorStop(0, gradient[0]);
+            grd.addColorStop(1, gradient[1]);
+
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, 400, 300);
+
+            // Текст
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 32px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, 200, 150);
+
+            // Иконка (простой домик)
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+
+            if (id === 'apartment') {
+                // Многоэтажка
+                ctx.strokeRect(150, 100, 100, 120);
+                // Окна
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 4; j++) {
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                        ctx.fillRect(165 + i * 30, 110 + j * 25, 15, 15);
+                    }
+                }
+            } else if (id === 'house') {
+                // Домик
+                ctx.beginPath();
+                ctx.moveTo(200, 80);
+                ctx.lineTo(250, 120);
+                ctx.lineTo(150, 120);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.strokeRect(165, 120, 70, 80);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fillRect(180, 140, 20, 20);
+                ctx.fillRect(210, 140, 20, 20);
+                ctx.fillRect(195, 170, 20, 30);
+            } else if (id === 'office') {
+                // Офисное здание
+                ctx.strokeRect(140, 80, 120, 140);
+                // Окна
+                for (let i = 0; i < 4; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                        ctx.fillRect(150 + i * 25, 90 + j * 25, 15, 15);
+                    }
+                }
+            }
+        }
+
+        function downloadImage(id, filename) {
+            const canvas = document.getElementById(id);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        // Создать все изображения при загрузке
+        window.onload = function() {
+            createPlaceholder('apartment', 'Квартира', ['#667eea', '#764ba2']);
+            createPlaceholder('house', 'Частный дом', ['#f093fb', '#f5576c']);
+            createPlaceholder('office', 'Офис', ['#4facfe', '#00f2fe']);
+        };
+    </script>
+</body>
+</html>

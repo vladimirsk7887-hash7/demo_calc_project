@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор пластиковых окон</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <!-- Прогресс бар -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+
+        <!-- Шаг 1: Тип помещения -->
+        <div class="step active" id="step1">
+            <h2>Выберите куда вам нужны окна</h2>
+            <p class="subtitle">Выберите тип помещения для установки</p>
+            <div class="options-grid">
+                <label class="option-card">
+                    <input type="radio" name="roomType" value="apartment">
+                    <div class="card-content">
+                        <div class="image-placeholder">
+                            <img src="images/apartment.jpg" alt="Квартира">
+                        </div>
+                        <span>Квартира</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="roomType" value="house">
+                    <div class="card-content">
+                        <div class="image-placeholder">
+                            <img src="images/house.jpg" alt="Частный дом">
+                        </div>
+                        <span>Частный дом</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="roomType" value="office">
+                    <div class="card-content">
+                        <div class="image-placeholder">
+                            <img src="images/office.jpg" alt="Офис">
+                        </div>
+                        <span>Офис</span>
+                    </div>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 2: Количество створок -->
+        <div class="step" id="step2">
+            <h2>Выберите количество створок</h2>
+            <p class="subtitle">Укажите количество створок для окна</p>
+            <div class="options-grid">
+                <label class="option-card">
+                    <input type="radio" name="sashCount" value="1">
+                    <div class="card-content">
+                        <span class="big-number">1</span>
+                        <span>Одна створка</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="sashCount" value="2">
+                    <div class="card-content">
+                        <span class="big-number">2</span>
+                        <span>Две створки</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="sashCount" value="3">
+                    <div class="card-content">
+                        <span class="big-number">3</span>
+                        <span>Три створки</span>
+                    </div>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 3: Размеры окна -->
+        <div class="step" id="step3">
+            <h2>Укажите размеры окна</h2>
+            <p class="subtitle">Введите размеры в миллиметрах</p>
+            <div class="size-inputs">
+                <div class="input-group">
+                    <label for="windowHeight">Высота (мм)</label>
+                    <input type="number" id="windowHeight" placeholder="Например, 1400" min="400" max="3000">
+                </div>
+                <div class="input-group">
+                    <label for="windowWidth">Ширина (мм)</label>
+                    <input type="number" id="windowWidth" placeholder="Например, 1200" min="400" max="3000">
+                </div>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 4: Тип створки (для 1 створки) -->
+        <div class="step" id="step4-single">
+            <h2>Выберите тип створки</h2>
+            <div class="options-list">
+                <label class="option-card horizontal">
+                    <input type="radio" name="sashType" value="fixed">
+                    <div class="card-content">
+                        <span>Глухая</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="sashType" value="turn">
+                    <div class="card-content">
+                        <span>Поворотная</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="sashType" value="turn-tilt">
+                    <div class="card-content">
+                        <span>Поворотно-откидная</span>
+                    </div>
+                </label>
+            </div>
+            <div class="accessories" id="singleAccessories" style="display: none;">
+                <h3>Дополнительные аксессуары</h3>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="accessories" value="mosquito">
+                    <span>Москитная сетка</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="accessories" value="childlock">
+                    <span>Детский замок</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 4: Левая створка (для 2-3 створок) -->
+        <div class="step" id="step4-left">
+            <h2>Выберите левую створку</h2>
+            <div class="options-list">
+                <label class="option-card horizontal">
+                    <input type="radio" name="leftSashType" value="fixed">
+                    <div class="card-content">
+                        <span>Глухая</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="leftSashType" value="turn">
+                    <div class="card-content">
+                        <span>Поворотная</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="leftSashType" value="turn-tilt">
+                    <div class="card-content">
+                        <span>Поворотно-откидная</span>
+                    </div>
+                </label>
+            </div>
+            <div class="accessories" id="leftAccessories" style="display: none;">
+                <h3>Дополнительные аксессуары</h3>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="leftAccessories" value="mosquito">
+                    <span>Москитная сетка</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="leftAccessories" value="childlock">
+                    <span>Детский замок</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 5: Правая створка (для 2 створок) / Средняя створка (для 3 створок) -->
+        <div class="step" id="step5-right">
+            <h2 id="rightSashTitle">Выберите правую створку</h2>
+            <div class="options-list">
+                <label class="option-card horizontal">
+                    <input type="radio" name="rightSashType" value="fixed">
+                    <div class="card-content">
+                        <span>Глухая</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="rightSashType" value="turn">
+                    <div class="card-content">
+                        <span>Поворотная</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="rightSashType" value="turn-tilt">
+                    <div class="card-content">
+                        <span>Поворотно-откидная</span>
+                    </div>
+                </label>
+            </div>
+            <div class="accessories" id="rightAccessories" style="display: none;">
+                <h3>Дополнительные аксессуары</h3>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="rightAccessories" value="mosquito">
+                    <span>Москитная сетка</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="rightAccessories" value="childlock">
+                    <span>Детский замок</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 6: Третья створка (только для 3 створок) -->
+        <div class="step" id="step6-third">
+            <h2>Выберите третью створку</h2>
+            <div class="options-list">
+                <label class="option-card horizontal">
+                    <input type="radio" name="thirdSashType" value="fixed">
+                    <div class="card-content">
+                        <span>Глухая</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="thirdSashType" value="turn">
+                    <div class="card-content">
+                        <span>Поворотная</span>
+                    </div>
+                </label>
+                <label class="option-card horizontal">
+                    <input type="radio" name="thirdSashType" value="turn-tilt">
+                    <div class="card-content">
+                        <span>Поворотно-откидная</span>
+                    </div>
+                </label>
+            </div>
+            <div class="accessories" id="thirdAccessories" style="display: none;">
+                <h3>Дополнительные аксессуары</h3>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="thirdAccessories" value="mosquito">
+                    <span>Москитная сетка</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="thirdAccessories" value="childlock">
+                    <span>Детский замок</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 7: Дополнительные комплектующие -->
+        <div class="step" id="step7">
+            <h2>Выберите дополнительные комплектующие</h2>
+            <p class="subtitle">Отметьте нужные дополнительные комплектующие галочками</p>
+            <div class="checkbox-group">
+                <label class="checkbox-option large">
+                    <input type="checkbox" name="components" value="sill">
+                    <span>Подоконник</span>
+                </label>
+                <label class="checkbox-option large">
+                    <input type="checkbox" name="components" value="slopes">
+                    <span>Откосы</span>
+                </label>
+                <label class="checkbox-option large">
+                    <input type="checkbox" name="components" value="drip">
+                    <span>Отливы</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 8: Прокачка окна -->
+        <div class="step" id="step8">
+            <h2>Прокачайте ваше окно</h2>
+            <p class="subtitle">Подберите индивидуальное решение для себя с учетом конкретных особенностей, функциональности, прочности и цвета.</p>
+            <p class="description">Мы изготовим уникальные технологичные окна для вас с улучшенными свойствами, которые вы выберете сами.</p>
+            <p class="hint">Выберите нужные параметры, этот шаг можно пропустить</p>
+
+            <div class="features-list">
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="soundproof">
+                    <span>Шумоизоляция</span>
+                    <span class="info-icon" data-tooltip="Специальное стекло и уплотнители снижают уровень шума с улицы до 42 дБ, обеспечивая тишину и комфорт в помещении">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="energy">
+                    <span>Теплосбережение</span>
+                    <span class="info-icon" data-tooltip="Теплосберегающее окно - пластиковый стеклопакет, который благодаря определенным модификациям препятствует теплообмену между помещением и улицей">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="sun">
+                    <span>Солнцезащита</span>
+                    <span class="info-icon" data-tooltip="Специальное напыление на стекле отражает до 70% солнечного тепла, предотвращая перегрев помещения летом и выгорание мебели">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="microvent">
+                    <span>Микропроветривание</span>
+                    <span class="info-icon" data-tooltip="Специальный механизм створки обеспечивает минимальное открытие окна для постоянного притока свежего воздуха без сквозняков">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="security">
+                    <span>Противовзломность</span>
+                    <span class="info-icon" data-tooltip="Усиленная фурнитура, специальные запорные механизмы и противовзломное стекло обеспечивают защиту от несанкционированного проникновения">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="light">
+                    <span>Светопропускание</span>
+                    <span class="info-icon" data-tooltip="Прозрачное стекло с высокой степенью светопропускания (до 90%) обеспечивает максимальное естественное освещение помещения">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="thermo">
+                    <span>Термопакет</span>
+                    <span class="info-icon" data-tooltip="Многокамерный стеклопакет с энергосберегающим покрытием и заполнением инертным газом для максимальной теплоизоляции">?</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox" name="features" value="lamination">
+                    <span>Ламинация</span>
+                    <span class="info-icon" data-tooltip="Декоративная пленка на профиле позволяет выбрать цвет и текстуру окна под дизайн интерьера, имитируя дерево или другие материалы">?</span>
+                </label>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 9: Сводка -->
+        <div class="step" id="step9">
+            <h2>Отлично, окно добавлено к расчёту!</h2>
+            <p class="subtitle">Добавьте ещё одно пластиковое окно или перейдите к следующему шагу</p>
+
+            <div class="summary-card">
+                <h3>Параметры окна</h3>
+                <div id="summaryContent"></div>
+                <button class="btn btn-secondary" onclick="editWindow()">Редактировать</button>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 10: Дополнительные услуги -->
+        <div class="step" id="step10">
+            <h2>Выберите дополнительные услуги</h2>
+            <p class="subtitle">Доставка, подъём на этаж и монтаж</p>
+
+            <div class="service-group">
+                <h3>Доставка</h3>
+                <div class="options-list">
+                    <label class="option-card horizontal">
+                        <input type="radio" name="delivery" value="mkad">
+                        <div class="card-content">
+                            <span>В пределах МКАД</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="delivery" value="moscow">
+                        <div class="card-content">
+                            <span>Московская область</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="delivery" value="pickup">
+                        <div class="card-content">
+                            <span>Самовывоз</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="service-group">
+                <h3>Подъём на этаж</h3>
+                <div class="options-list">
+                    <label class="option-card horizontal">
+                        <input type="radio" name="lift" value="cargo">
+                        <div class="card-content">
+                            <span>Грузовой лифт</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="lift" value="passenger">
+                        <div class="card-content">
+                            <span>Пассажирский лифт</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="lift" value="notneed">
+                        <div class="card-content">
+                            <span>Подъём не требуется</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="lift" value="nolift">
+                        <div class="card-content">
+                            <span>Лифта нет</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="service-group">
+                <h3>Монтаж</h3>
+                <div class="options-list">
+                    <label class="option-card horizontal">
+                        <input type="radio" name="installation" value="with">
+                        <div class="card-content">
+                            <span>С монтажом</span>
+                        </div>
+                    </label>
+                    <label class="option-card horizontal">
+                        <input type="radio" name="installation" value="without">
+                        <div class="card-content">
+                            <span>Без монтажа</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+                <button class="btn btn-next" onclick="nextStep()">Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 11: Финальная форма -->
+        <div class="step" id="step11">
+            <h2>Поздравляем, все готово для расчета!</h2>
+
+            <div class="final-summary">
+                <div class="summary-section">
+                    <h3>Размеры окна</h3>
+                    <p id="finalSize"></p>
+                </div>
+                <div class="summary-section">
+                    <h3>Дополнительные опции</h3>
+                    <div id="finalOptions"></div>
+                </div>
+                <div class="summary-section">
+                    <h3>Код расчета</h3>
+                    <p class="calc-code" id="calcCode"></p>
+                </div>
+            </div>
+
+            <p class="info-message">По вашему запросу возможны несколько вариантов, консультант перезвонит для уточнения деталей</p>
+
+            <div class="final-form">
+                <div class="input-group">
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" id="phone" placeholder="+7 (___) ___-__-__">
+                </div>
+
+                <label class="checkbox-option">
+                    <input type="checkbox" id="agreement" required>
+                    <span>Подтверждаю совершеннолетие и соглашаюсь на обработку персональных данных в соответствии с <a href="#" id="privacyLink">правовой информацией</a></span>
+                </label>
+
+                <button class="btn btn-primary btn-calculate" id="calculateBtn" disabled onclick="submitForm()">Рассчитать</button>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="prevStep()">Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно успеха -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h2>Ваша заявка принята!</h2>
+            <p>Мы свяжемся с вами в ближайшее время</p>
+            <button class="btn btn-primary" onclick="closeModal()">Закрыть</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

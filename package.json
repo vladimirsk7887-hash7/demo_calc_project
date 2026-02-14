@@ -1,0 +1,27 @@
+{
+  "name": "window-calculator",
+  "version": "1.0.0",
+  "description": "Калькулятор пластиковых окон с интеграцией Telegram",
+  "main": "server-example.js",
+  "scripts": {
+    "start": "node server-example.js",
+    "dev": "nodemon server-example.js"
+  },
+  "keywords": [
+    "calculator",
+    "windows",
+    "telegram",
+    "form"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
