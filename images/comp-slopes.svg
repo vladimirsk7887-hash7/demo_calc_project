@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect width="80" height="80" fill="none"/>
+  <!-- Wall -->
+  <rect x="10" y="10" width="60" height="60" rx="2" fill="#f0f0ff" stroke="#ccc" stroke-width="1"/>
+  <!-- Window opening -->
+  <rect x="22" y="15" width="36" height="45" rx="2" fill="#e8edff" stroke="#999" stroke-width="1"/>
+  <!-- Slopes (highlighted) - left -->
+  <rect x="17" y="13" width="7" height="49" rx="1" fill="#667eea" opacity="0.8"/>
+  <!-- Slopes - right -->
+  <rect x="56" y="13" width="7" height="49" rx="1" fill="#667eea" opacity="0.8"/>
+  <!-- Slopes - top -->
+  <rect x="17" y="10" width="46" height="7" rx="1" fill="#764ba2" opacity="0.7"/>
+  <!-- Window glass -->
+  <rect x="25" y="18" width="30" height="39" rx="1" fill="#e8edff"/>
+  <line x1="30" y1="22" x2="36" y2="38" stroke="white" stroke-width="1" opacity="0.5"/>
+</svg>

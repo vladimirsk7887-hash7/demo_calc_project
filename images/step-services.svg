@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="120" viewBox="0 0 280 120">
+  <rect width="280" height="120" fill="none"/>
+  <!-- Delivery truck -->
+  <g transform="translate(40, 35)">
+    <!-- Truck body -->
+    <rect x="0" y="15" width="45" height="30" rx="3" fill="#667eea" opacity="0.15" stroke="#667eea" stroke-width="1.5"/>
+    <!-- Truck cabin -->
+    <rect x="45" y="25" width="20" height="20" rx="3" fill="#667eea" opacity="0.25" stroke="#667eea" stroke-width="1.5"/>
+    <!-- Windshield -->
+    <rect x="50" y="28" width="12" height="10" rx="1.5" fill="#e8edff"/>
+    <!-- Wheels -->
+    <circle cx="15" cy="48" r="6" fill="#667eea" opacity="0.6"/>
+    <circle cx="55" cy="48" r="6" fill="#667eea" opacity="0.6"/>
+    <circle cx="15" cy="48" r="3" fill="white"/>
+    <circle cx="55" cy="48" r="3" fill="white"/>
+    <!-- Package -->
+    <rect x="12" y="22" width="16" height="16" rx="2" fill="#667eea" opacity="0.4"/>
+  </g>
+  <!-- Elevator -->
+  <g transform="translate(120, 30)">
+    <rect x="0" y="0" width="40" height="60" rx="3" fill="#764ba2" opacity="0.1" stroke="#764ba2" stroke-width="1.5"/>
+    <!-- Elevator door -->
+    <rect x="6" y="8" width="12" height="44" rx="1" fill="#764ba2" opacity="0.15" stroke="#764ba2" stroke-width="1"/>
+    <rect x="22" y="8" width="12" height="44" rx="1" fill="#764ba2" opacity="0.15" stroke="#764ba2" stroke-width="1"/>
+    <!-- Up arrow -->
+    <polygon points="20,3 16,9 24,9" fill="#764ba2" opacity="0.6"/>
+    <!-- Floor numbers -->
+    <text x="20" y="25" text-anchor="middle" fill="#764ba2" font-size="8" font-family="sans-serif" opacity="0.5">3</text>
+    <text x="20" y="40" text-anchor="middle" fill="#764ba2" font-size="8" font-family="sans-serif" opacity="0.5">2</text>
+    <text x="20" y="55" text-anchor="middle" fill="#764ba2" font-size="8" font-family="sans-serif" opacity="0.5">1</text>
+  </g>
+  <!-- Tools (installation) -->
+  <g transform="translate(195, 30)">
+    <!-- Wrench -->
+    <g transform="rotate(-30, 25, 30)">
+      <rect x="22" y="15" width="6" height="35" rx="3" fill="#667eea" opacity="0.3"/>
+      <circle cx="25" cy="13" r="8" fill="none" stroke="#667eea" stroke-width="2.5" opacity="0.5"/>
+      <circle cx="25" cy="13" r="4" fill="white"/>
+    </g>
+    <!-- Screwdriver -->
+    <g transform="rotate(20, 30, 30)">
+      <rect x="28" y="18" width="5" height="30" rx="2" fill="#764ba2" opacity="0.3"/>
+      <polygon points="28,48 33,48 32,56 29,56" fill="#764ba2" opacity="0.5"/>
+      <rect x="27" y="14" width="7" height="6" rx="1" fill="#764ba2" opacity="0.4"/>
+    </g>
+  </g>
+</svg>

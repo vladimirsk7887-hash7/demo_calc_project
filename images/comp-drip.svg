@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect width="80" height="80" fill="none"/>
+  <!-- Wall section (exterior view) -->
+  <rect x="10" y="10" width="60" height="50" rx="2" fill="#f0f0ff" stroke="#ccc" stroke-width="1"/>
+  <!-- Window -->
+  <rect x="22" y="14" width="36" height="30" rx="2" fill="#e8edff" stroke="#667eea" stroke-width="2"/>
+  <!-- Drip cap (highlighted) -->
+  <path d="M14 46 L14 42 L66 42 L66 46 L68 50 L12 50 Z" fill="#667eea"/>
+  <!-- Drip edge -->
+  <line x1="12" y1="50" x2="68" y2="50" stroke="#764ba2" stroke-width="1.5"/>
+  <!-- Water drops -->
+  <path d="M25 54 Q26 58 25 60 Q24 58 25 54Z" fill="#667eea" opacity="0.4"/>
+  <path d="M40 53 Q41 57 40 59 Q39 57 40 53Z" fill="#667eea" opacity="0.4"/>
+  <path d="M55 55 Q56 59 55 61 Q54 59 55 55Z" fill="#667eea" opacity="0.4"/>
+  <!-- Glass reflection -->
+  <line x1="28" y1="18" x2="33" y2="32" stroke="white" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -60,21 +60,27 @@
                 <label class="option-card">
                     <input type="radio" name="sashCount" value="1">
                     <div class="card-content">
-                        <span class="big-number">1</span>
+                        <div class="image-placeholder">
+                            <img src="images/sash-1.svg" alt="Одна створка">
+                        </div>
                         <span>Одна створка</span>
                     </div>
                 </label>
                 <label class="option-card">
                     <input type="radio" name="sashCount" value="2">
                     <div class="card-content">
-                        <span class="big-number">2</span>
+                        <div class="image-placeholder">
+                            <img src="images/sash-2.svg" alt="Две створки">
+                        </div>
                         <span>Две створки</span>
                     </div>
                 </label>
                 <label class="option-card">
                     <input type="radio" name="sashCount" value="3">
                     <div class="card-content">
-                        <span class="big-number">3</span>
+                        <div class="image-placeholder">
+                            <img src="images/sash-3.svg" alt="Три створки">
+                        </div>
                         <span>Три створки</span>
                     </div>
                 </label>
@@ -89,6 +95,9 @@
         <div class="step" id="step3">
             <h2>Укажите размеры окна</h2>
             <p class="subtitle">Введите размеры в миллиметрах</p>
+            <div class="step-illustration">
+                <img src="images/step-dimensions.svg" alt="Размеры окна">
+            </div>
             <div class="size-inputs">
                 <div class="input-group">
                     <label for="windowHeight">Высота (мм)</label>
@@ -112,18 +121,21 @@
                 <label class="option-card horizontal">
                     <input type="radio" name="sashType" value="fixed">
                     <div class="card-content">
+                        <img src="images/sash-fixed.svg" alt="" class="option-icon">
                         <span>Глухая</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="sashType" value="turn">
                     <div class="card-content">
+                        <img src="images/sash-turn.svg" alt="" class="option-icon">
                         <span>Поворотная</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="sashType" value="turn-tilt">
                     <div class="card-content">
+                        <img src="images/sash-turn-tilt.svg" alt="" class="option-icon">
                         <span>Поворотно-откидная</span>
                     </div>
                 </label>
@@ -152,18 +164,21 @@
                 <label class="option-card horizontal">
                     <input type="radio" name="leftSashType" value="fixed">
                     <div class="card-content">
+                        <img src="images/sash-fixed.svg" alt="" class="option-icon">
                         <span>Глухая</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="leftSashType" value="turn">
                     <div class="card-content">
+                        <img src="images/sash-turn.svg" alt="" class="option-icon">
                         <span>Поворотная</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="leftSashType" value="turn-tilt">
                     <div class="card-content">
+                        <img src="images/sash-turn-tilt.svg" alt="" class="option-icon">
                         <span>Поворотно-откидная</span>
                     </div>
                 </label>
@@ -192,18 +207,21 @@
                 <label class="option-card horizontal">
                     <input type="radio" name="rightSashType" value="fixed">
                     <div class="card-content">
+                        <img src="images/sash-fixed.svg" alt="" class="option-icon">
                         <span>Глухая</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="rightSashType" value="turn">
                     <div class="card-content">
+                        <img src="images/sash-turn.svg" alt="" class="option-icon">
                         <span>Поворотная</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="rightSashType" value="turn-tilt">
                     <div class="card-content">
+                        <img src="images/sash-turn-tilt.svg" alt="" class="option-icon">
                         <span>Поворотно-откидная</span>
                     </div>
                 </label>
@@ -232,18 +250,21 @@
                 <label class="option-card horizontal">
                     <input type="radio" name="thirdSashType" value="fixed">
                     <div class="card-content">
+                        <img src="images/sash-fixed.svg" alt="" class="option-icon">
                         <span>Глухая</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="thirdSashType" value="turn">
                     <div class="card-content">
+                        <img src="images/sash-turn.svg" alt="" class="option-icon">
                         <span>Поворотная</span>
                     </div>
                 </label>
                 <label class="option-card horizontal">
                     <input type="radio" name="thirdSashType" value="turn-tilt">
                     <div class="card-content">
+                        <img src="images/sash-turn-tilt.svg" alt="" class="option-icon">
                         <span>Поворотно-откидная</span>
                     </div>
                 </label>
@@ -270,16 +291,19 @@
             <h2>Выберите дополнительные комплектующие</h2>
             <p class="subtitle">Отметьте нужные дополнительные комплектующие галочками</p>
             <div class="checkbox-group">
-                <label class="checkbox-option large">
+                <label class="checkbox-option large with-icon">
                     <input type="checkbox" name="components" value="sill">
+                    <img src="images/comp-sill.svg" alt="" class="option-icon">
                     <span>Подоконник</span>
                 </label>
-                <label class="checkbox-option large">
+                <label class="checkbox-option large with-icon">
                     <input type="checkbox" name="components" value="slopes">
+                    <img src="images/comp-slopes.svg" alt="" class="option-icon">
                     <span>Откосы</span>
                 </label>
-                <label class="checkbox-option large">
+                <label class="checkbox-option large with-icon">
                     <input type="checkbox" name="components" value="drip">
+                    <img src="images/comp-drip.svg" alt="" class="option-icon">
                     <span>Отливы</span>
                 </label>
             </div>
@@ -292,8 +316,10 @@
         <!-- Шаг 8: Прокачка окна -->
         <div class="step" id="step8">
             <h2>Прокачайте ваше окно</h2>
+            <div class="step-illustration">
+                <img src="images/step-upgrade.svg" alt="Прокачка окна">
+            </div>
             <p class="subtitle">Подберите индивидуальное решение для себя с учетом конкретных особенностей, функциональности, прочности и цвета.</p>
-            <p class="description">Мы изготовим уникальные технологичные окна для вас с улучшенными свойствами, которые вы выберете сами.</p>
             <p class="hint">Выберите нужные параметры, этот шаг можно пропустить</p>
 
             <div class="features-list">
@@ -346,6 +372,9 @@
 
         <!-- Шаг 9: Сводка -->
         <div class="step" id="step9">
+            <div class="step-illustration">
+                <img src="images/step-summary.svg" alt="Сводка">
+            </div>
             <h2>Отлично, окно добавлено к расчёту!</h2>
             <p class="subtitle">Добавьте ещё одно пластиковое окно или перейдите к следующему шагу</p>
 
@@ -364,6 +393,9 @@
         <!-- Шаг 10: Дополнительные услуги -->
         <div class="step" id="step10">
             <h2>Выберите дополнительные услуги</h2>
+            <div class="step-illustration">
+                <img src="images/step-services.svg" alt="Услуги">
+            </div>
             <p class="subtitle">Доставка, подъём на этаж и монтаж</p>
 
             <div class="service-group">
@@ -446,6 +478,9 @@
 
         <!-- Шаг 11: Финальная форма -->
         <div class="step" id="step11">
+            <div class="step-illustration">
+                <img src="images/step-final.svg" alt="Финал">
+            </div>
             <h2>Поздравляем, все готово для расчета!</h2>
 
             <div class="final-summary">

@@ -188,6 +188,41 @@ h2 {
 .option-card.horizontal .card-content {
     padding: 15px 20px;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Иконки в карточках опций */
+.option-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+/* Иконки в чекбоксах с иконкой */
+.checkbox-option.with-icon {
+    gap: 12px;
+}
+
+.checkbox-option.with-icon .option-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 6px;
+}
+
+/* Иллюстрации-заголовки шагов */
+.step-illustration {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step-illustration img {
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
 }
 
 /* Поля ввода */
@@ -596,6 +631,20 @@ h2 {
     .info-icon:hover::after {
         width: 250px;
         right: -10px;
+    }
+
+    .step-illustration img {
+        max-width: 220px;
+    }
+
+    .option-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .checkbox-option.with-icon .option-icon {
+        width: 40px;
+        height: 40px;
     }
 }
 

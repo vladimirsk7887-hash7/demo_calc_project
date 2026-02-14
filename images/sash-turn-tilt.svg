@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect width="80" height="80" fill="none"/>
+  <!-- Window frame -->
+  <rect x="10" y="5" width="60" height="70" rx="4" fill="#f0f0ff" stroke="#667eea" stroke-width="2.5"/>
+  <!-- Glass -->
+  <rect x="16" y="11" width="48" height="58" rx="2" fill="#e8edff"/>
+  <!-- Hinge indicators (left + bottom) -->
+  <line x1="16" y1="15" x2="16" y2="65" stroke="#667eea" stroke-width="3" opacity="0.4"/>
+  <line x1="20" y1="69" x2="60" y2="69" stroke="#667eea" stroke-width="3" opacity="0.4"/>
+  <!-- Turn arrow (horizontal) -->
+  <path d="M55 34 L45 28 L45 31 L33 31 L33 37 L45 37 L45 40 Z" fill="#667eea" opacity="0.5"/>
+  <!-- Tilt arrow (vertical, upward) -->
+  <path d="M33 50 L27 58 L30 58 L30 66 L36 66 L36 58 L39 58 Z" fill="#764ba2" opacity="0.5"/>
+  <!-- Handle -->
+  <rect x="61" y="35" width="4" height="16" rx="2" fill="#667eea"/>
+  <circle cx="63" cy="33" r="2.5" fill="#667eea"/>
+</svg>
